@@ -18,6 +18,8 @@ class Request:
     self.url = url
     self.query = query
     self.key = None
+    if self.client.token:
+      self.query.update({'access_token': self.client.token})
 
   def where(self, key, op=None, value=None):
     # if only one argument, must be an array
@@ -40,42 +42,47 @@ class Request:
       query = {key: {op: value}}
 
     self.query.update(query)
+    return self
 
   def limit(self, value=None):
     if value is not None: self.query.update({'limit': value})
+    return self
 
   def offset(self, value=None):
     if value is not None: self.query.update({'offset': value})
+    return self
 
   def nextPage(self):
     if 'limit' in self.query:
       offset = self.query['offset'] if 'offset' in self.query else 0
       self.query['offset'] = offset + self.query['limit']
+    return self
 
   def prevPage(self):
     if 'limit' in self.query and 'offset' in self.query:
       l = self.query['offset'] - self.query['limit']
       self.query['offset'] = l if l > 0 else 0
+    return self
 
   def get(self, id):
     self.method = 'get'
     self.key = id
-    return self.end()
+    return self.end(id)
 
   def getAll(self):
     self.method = 'get'
+    self.key = None
     return self.end()
 
   def encodeQS(self):
     return jsonurl.query_string(self.query)
 
-  def getURL(self):
-    u = '&' if (self.key is None) else ''
-    return self.url + u + self.encodeQS()
+  def getURL(self, id):
+    u = '/' + id if (id is not None) else ''
+    return self.url + u + '?' + self.encodeQS()
 
-  def end(self):
-    print "url %s" % self.getURL()
-    r = requests.get(self.getURL(), verify=False);
+  def end(self, id=None):
+    r = requests.get(self.getURL(id), verify=False);
     return r.json()
 
 def getOperator(op):
