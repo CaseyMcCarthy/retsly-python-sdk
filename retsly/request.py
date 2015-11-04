@@ -17,9 +17,6 @@ class Request:
     self.method = method
     self.url = url
     self.query = query
-    self.key = None
-    if self.client.token:
-      self.query.update({'access_token': self.client.token})
 
   def where(self, key, op=None, value=None):
     # if only one argument, must be an array
@@ -66,23 +63,23 @@ class Request:
 
   def get(self, id):
     self.method = 'get'
-    self.key = id
     return self.end(id)
 
   def getAll(self):
     self.method = 'get'
-    self.key = None
     return self.end()
 
   def encodeQS(self):
     return jsonurl.query_string(self.query)
 
   def getURL(self, id):
-    u = '/' + id if (id is not None) else ''
-    return self.url + u + '?' + self.encodeQS()
+    key = '/' + id if (id is not None) else ''
+    return self.url + key + '?' + self.encodeQS()
 
   def end(self, id=None):
-    r = requests.get(self.getURL(id), verify=False);
+    if self.client.token: headers = {'Authorization': 'Bearer '+self.client.token}
+    else: headers = {}
+    r = requests.get(self.getURL(id), headers=headers, verify=False);
     return r.json()
 
 def getOperator(op):

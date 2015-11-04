@@ -2,7 +2,7 @@ from setuptools import setup
 import sys
 import os
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'retsly_python_sdk'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'retsly'))
 
 
 def readme():
@@ -10,7 +10,7 @@ def readme():
         return f.read()
 
 setup(
-    name='retsly-python-sdk',
+    name='retsly',
     version='0.0.1',
     description="A Python wrapper for the Retsly API (https://rets.ly)",
     long_description=readme(),
@@ -25,7 +25,7 @@ setup(
     author_email='support@rets.ly',
     license='MIT',
     packages=[
-        'retsly_python_sdk'
+        'retsly'
     ],
     install_requires=[
         'requests',
