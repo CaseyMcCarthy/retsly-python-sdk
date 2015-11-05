@@ -18,6 +18,10 @@ class Request:
     self.url = url
     self.query = query
 
+  def query(self, query={}):
+    self.query.update(query);
+    return self;
+
   def where(self, key, op=None, value=None):
     # if only one argument, must be an array
     if (op is None and value is None):
