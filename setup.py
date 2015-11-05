@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='retsly',
-    version='1.0.2',
+    version='1.0.3',
     description="A Python wrapper for the Retsly API (https://rets.ly)",
     long_description=read_md('README.md'),
     classifiers=[
@@ -22,7 +22,7 @@ setup(
         'Programming Language :: Python :: 2.7'
     ],
     keywords='retsly python sdk',
-    url='https://github.com/retsly/python-sdk',
+    url='https://github.com/retsly/retsly-python-sdk',
     author='Retsly Software Inc.',
     author_email='support@rets.ly',
     license='MIT',
