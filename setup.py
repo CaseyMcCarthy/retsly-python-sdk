@@ -4,15 +4,18 @@ import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'retsly'))
 
-def readme():
-    with open('README.md') as f:
-        return f.read()
+try:
+    from pypandoc import convert
+    read_md = lambda f: convert(f, 'rst')
+except ImportError:
+    print("warning: pypandoc module not found, could not convert Markdown to RST")
+    read_md = lambda f: open(f, 'r').read()
 
 setup(
     name='retsly',
-    version='1.0.0',
+    version='1.0.1',
     description="A Python wrapper for the Retsly API (https://rets.ly)",
-    long_description=readme(),
+    long_description=read_md('README.md'),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: MIT License',
