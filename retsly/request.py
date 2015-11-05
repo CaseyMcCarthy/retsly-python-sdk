@@ -23,13 +23,18 @@ class Request:
     return self;
 
   def where(self, key, op=None, value=None):
-    # if only one argument, must be an array
     if (op is None and value is None):
-      array = key
-      if isinstance(array, list) and len(array) is not 3:
-        raise ValueError('You must provide an array as the first argument, e.g. [key, op, value]')
-      else:
+      if isinstance(key, basestring):
+        array = key.split(' ')
+      elif isinstance(key, list):
+        array = key
+
+      if len(array) == 2:
+        key, op, value = array[0], 'eq', array[1]
+      elif len(array) == 3:
         key, op, value = array[0], array[1], array[2]
+      else:
+          raise ValueError('Please provide a valid query parameter')
     # assume operator is eq if only two arguments is provided
     elif (value is None):
       value = op

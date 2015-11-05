@@ -87,7 +87,8 @@ Helper function for building queries, works with different signatures.
 ```python
 request.where(['bedrooms', 'lt', 4])
        .where('livingArea', 'gt', 3000)
-       .where('bathrooms', 3)
+       .where('baths', 3)
+       .where('garageSpaces 2')
 ```
 
 ### Request.get(id)
