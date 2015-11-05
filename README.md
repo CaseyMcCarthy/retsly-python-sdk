@@ -13,9 +13,9 @@ pip install retsly
 ## Usage
 
 ```python
-import Retsly
+from Retsly import Client
 
-retsly = Retsly("token", "test");
+retsly = Client("token", "test");
 
 listings = (
   retsly
@@ -29,39 +29,39 @@ listings = (
 
 All classes are in the `Retsly` namespace. Most methods are chainable.
 
-### retsly(token, vendor)
+### Client(token, vendor)
 
-A new instance of `Retsly` needs an API token. Optionally set the vendor (the MLS data source).
+A new instance of `Client` needs an API token. Optionally set the vendor (the MLS data source).
 
-### Retsly.vendor(vendor)
+### Client.vendor(vendor)
 
 Sets the vendor to the given value.
 
-### Retsly.listings([query])
+### Client.listings([query])
 
 Returns a new `Request` for the Listings resource.
 
-### Retsly.agents([query])
+### Client.agents([query])
 
 Returns a new `Request` for the Agents resource.
 
-### Retsly.offices([query])
+### Client.offices([query])
 
 Returns a new `Request` for the Offices resource.
 
-### Retsly.openHouses([query])
+### Client.openHouses([query])
 
 Returns a new `Request` for the OpenHouses resource.
 
-### Retsly.assessments([query])
+### Client.assessments([query])
 
 Returns a new `Request` for the Assessments resource.
 
-### Retsly.transactions([query])
+### Client.transactions([query])
 
 Returns a new `Request` for the Transactions resource.
 
-### Retsly.parcels([query])
+### Client.parcels([query])
 
 Returns a new `Request` for the Parcels resource.
 

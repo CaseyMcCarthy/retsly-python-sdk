@@ -8,9 +8,9 @@ from transactionRequest import TransactionRequest
 from parcelRequest import ParcelRequest
 from vendorRequest import VendorRequest
 
-BASE_URL = 'https://dev.rets.io/api/v1'
+BASE_URL = 'https://rets.io/api/v1'
 
-class Retsly:
+class Client:
   def __init__(self, token, vendor='test'):
     """
     Construct Retsly client
@@ -29,8 +29,12 @@ class Retsly:
   def getURL(self, resource):
     if resource == 'vendors':
       return '/'.join([BASE_URL, resource, self.vendor])
-    else:      
+    else:
       return '/'.join([BASE_URL, self.vendor, resource])
+
+  def vendor(self, vendor):
+    self.vendor = vendor
+    return self
 
   def listings(self, query={}):
     return ListingRequest(self, query)
