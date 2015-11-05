@@ -13,7 +13,7 @@ pip install retsly
 ## Usage
 
 ```python
-from Retsly import Client
+from retsly import Client
 
 retsly = Client("token", "test");
 

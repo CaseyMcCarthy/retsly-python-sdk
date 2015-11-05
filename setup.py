@@ -11,7 +11,7 @@ def readme():
 
 setup(
     name='retsly',
-    version='0.1.1',
+    version='0.2.0',
     description="A Python wrapper for the Retsly API (https://rets.ly)",
     long_description=readme(),
     classifiers=[

@@ -23,6 +23,43 @@ class Client:
     self.token = token
     self.vendor = vendor
 
+  def setVendor(self, vendor):
+    """Set the vendor"""
+    self.vendor = vendor
+    return self
+
+  def listings(self, query={}):
+    """Get a listings request"""
+    return ListingRequest(self, query)
+
+  def agents(self, query={}):
+    """Get an agents request"""
+    return AgentRequest(self, query)
+
+  def offices(self, query={}):
+    """Get an offices request"""
+    return OfficeRequest(self, query)
+
+  def openHouses(self, query={}):
+    """Get an openhouses request"""
+    return OpenHouseRequest(self, query)
+
+  def assessments(self, query={}):
+    """Get an assessments request"""
+    return AssessmentRequest(self, query)
+
+  def transactions(self, query={}):
+    """Get a transactions request"""
+    return TransactionRequest(self, query)
+
+  def parcels(self, query={}):
+    """Get a parcels request"""
+    return ParcelRequest(self, query)
+
+  def vendors(self, query={}):
+    """Get a vendors request"""
+    return VendorRequest(self, query)
+
   def getRequest(self, method, url, query):
     return Request(self, method, url, query)
 
@@ -31,31 +68,3 @@ class Client:
       return '/'.join([BASE_URL, resource, self.vendor])
     else:
       return '/'.join([BASE_URL, self.vendor, resource])
-
-  def vendor(self, vendor):
-    self.vendor = vendor
-    return self
-
-  def listings(self, query={}):
-    return ListingRequest(self, query)
-
-  def agents(self, query={}):
-    return AgentRequest(self, query)
-
-  def offices(self, query={}):
-    return OfficeRequest(self, query)
-
-  def openHouses(self, query={}):
-    return OpenHouseRequest(self, query)
-
-  def assessments(self, query={}):
-    return AssessmentRequest(self, query)
-
-  def transactions(self, query={}):
-    return TransactionRequest(self, query)
-
-  def parcels(self, query={}):
-    return ParcelRequest(self, query)
-
-  def vendors(self, query={}):
-    return VendorRequest(self, query)

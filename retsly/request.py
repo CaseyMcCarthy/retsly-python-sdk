@@ -83,7 +83,7 @@ class Request:
   def end(self, id=None):
     if self.client.token: headers = {'Authorization': 'Bearer '+self.client.token}
     else: headers = {}
-    r = requests.get(self.getURL(id), headers=headers, verify=False);
+    r = requests.get(self.getURL(id), headers=headers);
     return r.json()
 
 def getOperator(op):
