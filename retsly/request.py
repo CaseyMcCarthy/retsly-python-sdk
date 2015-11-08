@@ -19,7 +19,7 @@ class Request:
     self.query = query if query is not None else {}
 
 
-  def query(self, query):
+  def query(self, query={}):
     self.query.update(query);
     return self;
 
