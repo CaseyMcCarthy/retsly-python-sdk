@@ -2,7 +2,7 @@ import requests
 import jsonurl
 
 class Request:
-  def __init__(self, client, method, url, query={}):
+  def __init__(self, client, method, url, query=None):
     """
     Construct request for the Retsly API
 
@@ -16,9 +16,10 @@ class Request:
     self.client = client
     self.method = method
     self.url = url
-    self.query = query
+    self.query = query if query is not None else {}
 
-  def query(self, query={}):
+
+  def query(self, query):
     self.query.update(query);
     return self;
 
