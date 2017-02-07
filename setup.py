@@ -31,6 +31,6 @@ setup(
     ],
     install_requires=[
         'requests',
-        'jsonurl'
+        'querystring'
     ]
 )
