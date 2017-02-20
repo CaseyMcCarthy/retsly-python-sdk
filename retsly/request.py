@@ -1,5 +1,5 @@
 import requests
-import querystring
+import jsonurl
 
 class Request:
   def __init__(self, client, method, url, query=None):
@@ -80,7 +80,7 @@ class Request:
     return self.end()
 
   def encodeQS(self):
-    return querystring.stringify_obj(self.query)
+    return jsonurl.query_string(self.query).replace('..', '.')
 
   def getURL(self, id):
     key = '/' + id if (id is not None) else ''
