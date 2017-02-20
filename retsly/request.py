@@ -99,5 +99,6 @@ def getOperator(op):
   elif op == '>=' or op == 'gte': return 'gte'
   elif op == '!=' or op == 'ne': return 'ne'
   elif op == '=' or op == 'eq': return 'eq'
+  elif op == 'in': return 'in'
   elif op == 'regex': return 'regex'
   else: raise ValueError('You must provide a valid operator')

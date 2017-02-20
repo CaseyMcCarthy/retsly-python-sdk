@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='retsly',
-    version='1.0.8',
+    version='1.0.9',
     description="A Python wrapper for the Retsly API (https://rets.ly)",
     long_description=read_md('README.md'),
     classifiers=[
